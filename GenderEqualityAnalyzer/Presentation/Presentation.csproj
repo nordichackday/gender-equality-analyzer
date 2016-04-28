@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
     <Content Include="Views\_Master.cshtml" />
     <Content Include="Views\Shared\_top.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
