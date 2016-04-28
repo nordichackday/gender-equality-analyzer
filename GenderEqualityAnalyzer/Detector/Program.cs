@@ -28,7 +28,7 @@ namespace Detector
         static async Task<IEnumerable<Face>> DetectFaces(string imageUrl)
         {
             var client = new FaceServiceClient("12d8c6e300bb43dfaddfac5b62d9cde8");
-
+           
             var faces = await client.DetectAsync(imageUrl, true, true, new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.FacialHair,
                                                                                                     FaceAttributeType.Gender, FaceAttributeType.Glasses,
                                                                                                     FaceAttributeType.HeadPose, FaceAttributeType.Smile});
@@ -50,20 +50,31 @@ namespace Detector
 
         static void Main(string[] args)
         {
-            ProcessUnParsedImages();
-            var image = @"https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/3/000/115/1e1/3122221.jpg";
+            Console.WriteLine("Starting processing unparsed images");
+            while(true)
+            {
+                ProcessUnParsedImages();
+                Console.WriteLine("Going to sleep now at: " + DateTime.Now.ToShortTimeString()+ ":" + DateTime.Now.Second.ToString() );
+                System.Threading.Thread.Sleep(1000 * 45); 
+            }
+
         }
 
         private static void ProcessUnParsedImages()
         {
             var articleRepo = new ArticleRepository();
-            var articles = articleRepo.GetUnParsed().Take(10);
+            var articles = articleRepo.GetUnParsed().Take(20);
+            Console.WriteLine("Number of articles unparsed: " + articles.Count());
             foreach (var article in articles)
             {
+                Console.WriteLine("Processing image: " + article.ImageUrl + " from article: " + article.Title);
                 var faces = Task.Run(() => DetectFaces(article.ImageUrl)).Result;
                 article.Faces =  faces.ToList();
+                article.IsImageParsed = true;
+                article.ContainsPerson = (faces.Count() > 0);
                 articleRepo.Update(article);
             }
+            Console.WriteLine("Saving faces to db");
             articleRepo.Save();
         }
     }
