@@ -10,16 +10,19 @@
 <body>
 <header>
     <div class="topmenu spacing">
-        <span class="site-logo thin-font"><a href="/"><i class="fa fa-venus-mars fa-spin" aria-hidden="true" id="site-icon"></i>Gender<span class="fat">Equality</span>Tool</a></span>
+        <span class="site-logo thin-font"><a href="/"><i class="fa fa-venus-mars" aria-hidden="true" id="site-icon"></i>Gender<span class="fat">Equality</span>Tool</a></span>
         <span class="offscreen">Menu</span><i class="fa fa-bars menu-button"></i>
         <ul class="main-navigation standard-list">
-            <li></li>
+            <li>Sveriges Radio</li>
+            <li>NRK.no</li>
         </ul>
     </div>
 </header>
     @RenderSection("Splash", false)
     <div class="page-wrapper spacing">
-        @RenderBody()
+        <div class="content">
+            @RenderBody()
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="~/assets/script.js"></script>

@@ -34,6 +34,19 @@ header {
     font-weight: bold;
 }
 
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.fade-in {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+
 .offscreen {
     position: absolute;
     top: -9999px;
@@ -126,6 +139,12 @@ a:hover {
     color:#204d74
 }
 
+#waiting {
+    font-size: 300px;
+    text-align: center;
+    opacity: 0.1;
+    padding-top: 20%;
+}
 .gender-statistics-wrapper .total-female,
 .gender-statistics-wrapper .total-male {
     font-size: 130px;

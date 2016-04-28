@@ -6,6 +6,7 @@ namespace Presentation.Controllers
     public class StatisticsController : Controller
     {
         // GET: Statistics
+        [OutputCache(Duration = 600, VaryByParam = "none")]
         public ActionResult Index()
         {
 

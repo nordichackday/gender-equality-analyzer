@@ -29,9 +29,22 @@ gender.actions = {
                 gender.actions.Counter($me);
             }, 10);
         }
+    },
 
+    AddSpinner: function () {
+        var $content = $(".page-wrapper");
+        if ($content.hasClass("fade-in")) {
+            $content.removeClass("fade-in").addClass("fade-out");
+            return;
+        } else {
+            $content.addClass("fade-out");
+            
+        }
 
-
+        setTimeout(function() {
+            $content.html("<div id=\"waiting\"><i class=\"fa fa-venus-mars fa-spin\"></i></div>");
+            $content.removeClass("fade-out").addClass("fade-in");
+        }, 1000);
 
     }
 }
@@ -59,10 +72,6 @@ gender.init = function () {
     setTimeout(function() {
         gender.listners.StatisticsAnimation();
     }, 1500);
-   
-    setTimeout(function() {
-        gender.actions.RemoveAnimation();
-    }, 2000);
 }
 
 
