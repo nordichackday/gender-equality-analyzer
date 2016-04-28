@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.DataContext
 {
@@ -7,6 +9,8 @@ namespace Core.DataContext
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        [Index]
+        [MaxLength(200)]
         public string Url { get; set; }
         public string ImageUrl { get; set; }
         public DateTime CreatedDate { get; set; }

@@ -70,6 +70,14 @@
     <Compile Include="Migrations\201604281230233_sites1.Designer.cs">
       <DependentUpon>201604281230233_sites1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604281547186_uppdatering.cs" />
+    <Compile Include="Migrations\201604281547186_uppdatering.Designer.cs">
+      <DependentUpon>201604281547186_uppdatering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604281556279_index på url.cs" />
+    <Compile Include="Migrations\201604281556279_index på url.Designer.cs">
+      <DependentUpon>201604281556279_index på url.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
@@ -90,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604281230233_sites1.resx">
       <DependentUpon>201604281230233_sites1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281547186_uppdatering.resx">
+      <DependentUpon>201604281547186_uppdatering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281556279_index på url.resx">
+      <DependentUpon>201604281556279_index på url.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

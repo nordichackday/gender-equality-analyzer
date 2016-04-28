@@ -41,8 +41,10 @@ namespace Core.Repositories
 
         public IEnumerable<Article> FilterParsedArticles(IEnumerable<Article> articles)
         {
+            var allArticles = _dbContext.Articles.ToList();
+
             return
-                articles.Where(x => !_dbContext.Articles.Any(a => a.Url == x.Url || x.PublishedDate > a.PublishedDate));
+                articles.Where(x => allArticles.All(a => a.Url != x.Url));
         }
 
         public void AddOrUpdate(IEnumerable<Article> articles)
