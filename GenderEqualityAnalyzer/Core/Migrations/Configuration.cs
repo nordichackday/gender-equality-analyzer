@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Core.DataContext;
+
 namespace Core.Migrations
 {
     using System;
@@ -26,6 +29,16 @@ namespace Core.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+
+            context.Sites.AddOrUpdate(s => s.Name, new Site()
+            {
+                Articles = new List<Article>(),
+                Name = "SverigesRadio",
+                ParsingStrategy = ParsingStrategy.NewsSiteMap,
+                Url = "http://sverigesradio.se/sida/newssitemap.aspx"
+            });
+
         }
     }
 }
