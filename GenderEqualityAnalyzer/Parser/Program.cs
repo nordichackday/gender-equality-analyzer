@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Core.DataContext;
+using Core.Repositories;
 
 namespace Parser
 {
@@ -37,10 +38,11 @@ namespace Parser
                     Title = x.Element(_xmlnsn + "news").Element(_xmlnsn + "title").Value
                 };
 
+            var articleRepository = new ArticleRepository();
 
-            articles = Parse(articles);
-            Console.WriteLine("");
+            articles = Parse(articleRepository.FilterParsedArticles(articles));
 
+            articleRepository.AddOrUpdate(articles);
         }
 
         private static DateTime GetDateTimeOrDefault(string date)
