@@ -49,11 +49,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext\Article.cs" />
+    <Compile Include="DataContext\Face.cs" />
+    <Compile Include="DataContext\Gender.cs" />
+    <Compile Include="DataContext\GenderEqualityAnalyzerContext.cs" />
+    <Compile Include="Migrations\201604281125084_inital.cs" />
+    <Compile Include="Migrations\201604281125084_inital.Designer.cs">
+      <DependentUpon>201604281125084_inital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604281144032_faces.cs" />
+    <Compile Include="Migrations\201604281144032_faces.Designer.cs">
+      <DependentUpon>201604281144032_faces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604281125084_inital.resx">
+      <DependentUpon>201604281125084_inital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281144032_faces.resx">
+      <DependentUpon>201604281144032_faces.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
