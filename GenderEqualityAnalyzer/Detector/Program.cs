@@ -27,7 +27,7 @@ namespace Detector
 
         static async Task<IEnumerable<Face>> DetectFaces(string imageUrl)
         {
-            var client = new FaceServiceClient("12d8c6e300bb43dfaddfac5b62d9cde8");
+            var client = new FaceServiceClient("d389c8fbaf95432d80f8ba99504ee2c3");
            
             var faces = await client.DetectAsync(imageUrl, true, true, new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.FacialHair,
                                                                                                     FaceAttributeType.Gender, FaceAttributeType.Glasses,
@@ -63,13 +63,15 @@ namespace Detector
         private static void ProcessUnParsedImages()
         {
             var articleRepo = new ArticleRepository();
-            var articles = articleRepo.GetUnParsed().Take(20);
+            var articles = articleRepo.GetUnParsed();//.Take(20);
             Console.WriteLine("Number of articles unparsed: " + articles.Count());
             foreach (var article in articles)
             {
-                Console.WriteLine("Processing image: " + article.ImageUrl + " from article: " + article.Title);
-                var faces = Task.Run(() => DetectFaces(article.ImageUrl)).Result;
+                var image = article.ImageUrl.Trim('"');
+                Console.WriteLine("Processing image: " + image + " \nfrom article: " + article.Title);
+                var faces = Task.Run(() => DetectFaces(image)).Result;
                 article.Faces =  faces.ToList();
+                Console.WriteLine("Faces found: " + faces.Count());
                 article.IsImageParsed = true;
                 article.ContainsPerson = (faces.Count() > 0);
                 articleRepo.Update(article);
