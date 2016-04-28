@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.DataContext;
 using Microsoft.ProjectOxford.Face;
+using Core.Repositories;
 
 namespace Detector
 {
@@ -49,8 +50,21 @@ namespace Detector
 
         static void Main(string[] args)
         {
+            ProcessUnParsedImages();
             var image = @"https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/3/000/115/1e1/3122221.jpg";
-            var faces = Task.Run(() => DetectFaces(image)).Result;
+        }
+
+        private static void ProcessUnParsedImages()
+        {
+            var articleRepo = new ArticleRepository();
+            var articles = articleRepo.GetUnParsed().Take(10);
+            foreach (var article in articles)
+            {
+                var faces = Task.Run(() => DetectFaces(article.ImageUrl)).Result;
+                article.Faces =  faces.ToList();
+                articleRepo.Update(article);
+            }
+            articleRepo.Save();
         }
     }
 }

@@ -24,6 +24,11 @@ namespace Core.Repositories
             return _dbContext.Articles.ToList();
         } 
 
+        public IEnumerable<Article> GetUnParsed()
+        {
+            return _dbContext.Articles.Where(x => x.IsImageParsed == false).ToList();
+        }
+
         public Article Get(int id)
         {
             return _dbContext.Articles.Find(id);
@@ -37,6 +42,11 @@ namespace Core.Repositories
         public void Update(Article article)
         {
             _dbContext.Entry(article).State = EntityState.Modified;
+        }
+
+        public void Save()
+        {
+            _dbContext.SaveChanges();
         }
 
         public IEnumerable<Article> FilterParsedArticles(IEnumerable<Article> articles)
