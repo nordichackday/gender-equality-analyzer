@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Web.Mvc;
+using Core.Repositories;
 
 namespace Presentation.Controllers
 {
     public class StatisticsController : Controller
     {
         // GET: Statistics
-        [OutputCache(Duration = 600, VaryByParam = "none")]
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
-
-            double totalProcessedImages = 2153;
-            double totalMale = 1600;
-            double totalFemale = 553;
-
-            var percentMale = Math.Round((totalMale / totalProcessedImages) * 100);
-            var percentFemale = Math.Round((totalFemale / totalProcessedImages) * 100);
-
-
-
-
-            return View();
+            if(string.IsNullOrEmpty(name))
+            {
+                name = "SverigesRadio";
+            }
+            var repo = new FaceRepository();
+            var content = repo.GetForStartPage(name);
+            return View(content);
         }
     }
 }

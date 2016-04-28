@@ -62,7 +62,7 @@ header {
 .large {
     font-size: 58px;
     line-height: 62px;
-    
+    text-transform: uppercase;
 }
 
 .standard-list {

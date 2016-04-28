@@ -46,6 +46,15 @@ gender.actions = {
             $content.removeClass("fade-out").addClass("fade-in");
         }, 1000);
 
+    },
+
+    GetAnalysedByBroadcaster: function(broadcaster) {
+        $.ajax({
+            dataType: "json",
+            url: "/ajax/GetAnalysedByBroadcaster?name=" + broadcaster,
+            data: data,
+            success: success
+        });
     }
 }
 

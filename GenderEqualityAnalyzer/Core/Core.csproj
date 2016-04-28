@@ -81,6 +81,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
+    <Compile Include="Repositories\FaceRepository.cs" />
+    <Compile Include="Results\FaceStartPageResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

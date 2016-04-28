@@ -1,18 +1,19 @@
-﻿
+﻿@model Core.Results.FaceStartPageResult
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/_Master.cshtml";
 }
 
-<h1 class="large thin-font">Sveriges Radio</h1>
+<h1 class="large thin-font">@Model.Broadcaster</h1>
 <div class="statistics-wrapper">
     <div class="gender-icons-container">
-        @for (var i = 0; i <= 26; i++)
+        @for (var i = 0; i <= Model.WomenPercentage; i++)
         {
             <i class="fa fa-female" aria-hidden="true"></i>
 
         }
-        @for (var i = 0; i <= 74; i++)
+        @for (var i = 0; i <= Model.MenPercentage; i++)
         {
             <i class="fa fa-male" aria-hidden="true"></i>
 
@@ -21,10 +22,10 @@
 
     <div class="gender-statistics-wrapper">
         <div class="total-female">
-            <i class="fa fa-female" aria-hidden="true"></i> <span data-action="counter" data-total="26">00</span>%
+            <i class="fa fa-female" aria-hidden="true"></i> <span data-action="counter" data-total="@Model.WomenPercentage">00</span>%
         </div>
         <div class="total-male">
-            <i class="fa fa-male" aria-hidden="true"></i> <span data-action="counter" data-total="74">00</span>%
+            <i class="fa fa-male" aria-hidden="true"></i> <span data-action="counter" data-total="@Model.MenPercentage">00</span>%
         </div>
 
     </div>
