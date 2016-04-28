@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using Core.DataContext;
 using Core.Repositories;
 
+
 namespace Parser
 {
     class Program
@@ -87,9 +88,4 @@ namespace Parser
             
         }
     }
-
-    
-    
-
-
 }
