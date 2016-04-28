@@ -31,7 +31,7 @@ namespace Parser
                 select x.Element(_xmlns + "loc").Value;
 
 
-            var articles = Parse(urls.Take(10));
+            var articles = Parse(urls);
 
             Console.WriteLine();
 
@@ -58,7 +58,7 @@ namespace Parser
 
             var html = await httpClient.GetStringAsync(url);
 
-            var regex = new Regex(@"<meta property=\""og:image\"" content=\""([\S]*)\""", RegexOptions.IgnoreCase);
+            var regex = new Regex(@"<meta property=\""og:image\"" content=\""([a-zA-Z0-9\/\:\.\-_]*)", RegexOptions.IgnoreCase);
 
             var match = regex.Match(html);
             if (match.Success)
