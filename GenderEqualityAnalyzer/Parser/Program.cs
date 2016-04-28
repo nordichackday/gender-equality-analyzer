@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Core.DataContext;
+using Microsoft.ProjectOxford.Face;
 
 namespace Parser
 {
@@ -25,17 +26,53 @@ namespace Parser
 
             XNamespace _xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
-            Console.WriteLine(xml.Descendants(XName.Get("url")));
 
             var urls = from x in xml.Elements(_xmlns + "urlset").Elements(_xmlns + "url")
                 select x.Element(_xmlns + "loc").Value;
 
 
-            var articles = Parse(urls.Take(10));
-
-            Console.WriteLine();
+            var images = Parse(urls.Take(1));
+            var faces = Task.Run(() => DetectFaces(images.First().ImageUrl)).Result;
 
         }
+
+        private static Gender DetermineGender (string gender)
+        {
+            if(gender == "male")
+            {
+                return Gender.Male;
+            }
+            else if(gender == "female")
+            {
+                return Gender.Female;
+            }
+
+            return Gender.Unknown;
+        }
+
+        static async Task<IEnumerable<Face>> DetectFaces(string imageUrl)
+        {
+            var client = new FaceServiceClient("12d8c6e300bb43dfaddfac5b62d9cde8");
+
+            var faces = await client.DetectAsync(imageUrl, true, true, new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.FacialHair,
+                                                                                                    FaceAttributeType.Gender, FaceAttributeType.Glasses,
+                                                                                                    FaceAttributeType.HeadPose, FaceAttributeType.Smile});
+            return faces.Select(x => new Face()
+            {
+                Article = null,
+                Age = x.FaceAttributes.Age,
+                BeardFactor = x.FaceAttributes.FacialHair.Beard,
+                FaceId = x.FaceId,
+                Gender = DetermineGender(x.FaceAttributes.Gender),
+                HeadPitch = x.FaceAttributes.HeadPose.Pitch,
+                HeadRoll = x.FaceAttributes.HeadPose.Roll,
+                HeadYaw = x.FaceAttributes.HeadPose.Yaw,
+                MoustacheFactor = x.FaceAttributes.FacialHair.Moustache,
+                SideburnsFactor = x.FaceAttributes.FacialHair.Sideburns,
+                SmileFactor = x.FaceAttributes.Smile
+            });
+        } 
+
 
         static IEnumerable<Article> Parse(IEnumerable<string> urls)
         {
@@ -84,9 +121,4 @@ namespace Parser
             
         }
     }
-
-    
-    
-
-
 }
