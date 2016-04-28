@@ -53,6 +53,7 @@
     <Compile Include="DataContext\Face.cs" />
     <Compile Include="DataContext\Gender.cs" />
     <Compile Include="DataContext\GenderEqualityAnalyzerContext.cs" />
+    <Compile Include="DataContext\Site.cs" />
     <Compile Include="Migrations\201604281125084_inital.cs" />
     <Compile Include="Migrations\201604281125084_inital.Designer.cs">
       <DependentUpon>201604281125084_inital.cs</DependentUpon>

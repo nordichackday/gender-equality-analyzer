@@ -14,5 +14,6 @@ namespace Core.DataContext
         public bool IsImageParsed { get; set; }
         public bool ContainsPerson { get; set; }
         public virtual ICollection<Face> Faces { get; set; } 
+        public virtual Site Site { get; set; }
     }
 }

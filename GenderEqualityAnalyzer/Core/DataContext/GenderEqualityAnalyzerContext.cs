@@ -12,5 +12,6 @@ namespace Core.DataContext
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Face> Faces { get; set; }
+        public DbSet<Site> Sites { get; set; }
     }
 }
