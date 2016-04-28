@@ -41,7 +41,8 @@ namespace Parser
 
             var articleRepository = new ArticleRepository();
 
-            articles = Parse(articleRepository.FilterParsedArticles(articles));
+            var articlesToParse = articleRepository.FilterParsedArticles(articles);
+            articles = Parse(articlesToParse);
 
             articleRepository.AddOrUpdate(articles);
         }
@@ -60,6 +61,8 @@ namespace Parser
                 var task = Parse(article);
                 tasks.Add(task);
             }
+            if (!tasks.Any())
+                return articles;
 
             Task.WaitAll(tasks.ToArray());
             return tasks.Select(x => x.Result);
