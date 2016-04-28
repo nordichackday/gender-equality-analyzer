@@ -54,6 +54,11 @@ namespace Core.Repositories
             _dbContext.SaveChanges();
         }
 
+        public async Task Save()
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
             _dbContext.Dispose();
