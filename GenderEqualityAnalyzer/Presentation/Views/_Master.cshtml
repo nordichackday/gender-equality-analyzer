@@ -14,7 +14,8 @@
         <span class="offscreen">Menu</span><i class="fa fa-bars menu-button"></i>
         <ul class="main-navigation standard-list">
             <li><a href="/?name=sverigesradio" onclick="gender.actions.AjaxWorker('/Statistics/GetGenderRepresentation?broadcaster=sverigesradio.se', gender.listners.StatisticsAnimation); return false;">Sverigesradio.se</a></li>
-            <li><a href="/?name=nrk"  onclick="gender.actions.AjaxWorker('/Statistics/GetGenderRepresentation?broadcaster=nrk.no', gender.listners.StatisticsAnimation); return false;">NRK.no</a></li>
+            <li><a href="/?name=nrk" onclick="gender.actions.AjaxWorker('/Statistics/GetGenderRepresentation?broadcaster=nrk.no', gender.listners.StatisticsAnimation); return false;">NRK.no</a></li>
+            <li><a href="@Url.Action("Charts", "Statistics")">Charts</a></li>
         </ul>
     </div>
 </header>

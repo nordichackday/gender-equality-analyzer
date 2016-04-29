@@ -30,9 +30,11 @@ namespace Presentation.Controllers
             return View(content);
         }
 
-        public ActionResult Charts(string broadcaster)
+        public ActionResult Charts()
         {
-            
+            var repo = new FaceRepository();
+            var content = repo.GetForChartsPage();
+            return View(content);
         }
     }
 }
