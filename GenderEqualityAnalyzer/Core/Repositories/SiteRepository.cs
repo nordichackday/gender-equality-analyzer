@@ -20,7 +20,7 @@ namespace Core.Repositories
         {
             return _dbContext.Sites.ToList();
         } 
-
+        
 
 
 

@@ -20,7 +20,7 @@ namespace Parser
         {
             var siteRepo = new SiteRepository();
 
-            foreach (var site in siteRepo.Get())
+            foreach (var site in siteRepo.Get().Where(x => x.Name == "Nettavisen"))
             {
                 var parser = ImageParser.Create(site);
                 var task = parser.Run();

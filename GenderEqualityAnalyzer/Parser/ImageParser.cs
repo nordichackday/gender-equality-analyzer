@@ -41,14 +41,14 @@ namespace Parser
             var counter = 0;
             var count = articles.Count();
 
-            articles = _articleRepository.FilterParsedArticles(articles);
+            articles = _articleRepository.FilterParsedArticles(articles, _site);
 
             foreach (var article in articles)
             {
                 try
                 {
                     var art = await Parse(article);
-                    _articleRepository.Add(art);
+                    _articleRepository.Add(art, _site.Id);
                     await _articleRepository.Save();
                 }
                 catch { }
@@ -74,9 +74,7 @@ namespace Parser
             var match = ImageRegex.Match(html);
             if (match.Success)
                 article.ImageUrl = match.Groups[1].Value;
-
-            _articleRepository.Add(article);
-            await _articleRepository.Save();
+            
             return article;
         }
 
@@ -122,7 +120,7 @@ namespace Parser
                 select x.Element(_xmlns + "loc").Value;
 
 
-            var tasks = siteMaps.Select(ParseSiteMap);
+            var tasks = siteMaps.Take(30).Select(ParseSiteMap);
 
             await Task.WhenAll(tasks);
 
@@ -140,7 +138,7 @@ namespace Parser
                 {
                     CreatedDate = DateTime.Now,
                     Url = x.Element(_xmlns + "loc").Value,
-                    PublishedDate = GetDateTimeOrDefault(x.Element(_xmlns + "lastmod").Value)
+                    PublishedDate = GetDateTimeOrDefault(x.Element(_xmlns + "lastmod") != null ? x.Element(_xmlns + "lastmod").Value : "2015-01-01"),
                 };
 
             return articles;

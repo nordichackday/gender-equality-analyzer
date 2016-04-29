@@ -29,8 +29,10 @@ namespace Core.Repositories
             return _dbContext.Articles.Find(id);
         }
 
-        public void Add(Article article)
+        public void Add(Article article, int siteId)
         {
+            var site = _dbContext.Sites.Find(siteId);
+            article.Site = site;
             _dbContext.Articles.Add(article);
         }
 
@@ -39,9 +41,9 @@ namespace Core.Repositories
             _dbContext.Entry(article).State = EntityState.Modified;
         }
 
-        public IEnumerable<Article> FilterParsedArticles(IEnumerable<Article> articles)
+        public IEnumerable<Article> FilterParsedArticles(IEnumerable<Article> articles, Site site)
         {
-            var allArticles = _dbContext.Articles.ToList();
+            var allArticles = _dbContext.Articles.Where(x => x.Site.Id == site.Id).ToList();
 
             return
                 articles.Where(x => allArticles.All(a => a.Url != x.Url));
