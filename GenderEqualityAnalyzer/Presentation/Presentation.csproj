@@ -142,6 +142,7 @@
     <Content Include="Views\Statistics\GetGenderRepresentation.cshtml" />
     <Content Include="Views\Statistics\Details.cshtml" />
     <None Include="Properties\PublishProfiles\GenderRepresentationIndex - Web Deploy.pubxml" />
+    <Content Include="Views\Statistics\Charts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
