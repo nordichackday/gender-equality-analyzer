@@ -34,6 +34,19 @@ header {
     font-weight: bold;
 }
 
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.fade-in {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+
 .offscreen {
     position: absolute;
     top: -9999px;
@@ -49,7 +62,7 @@ header {
 .large {
     font-size: 58px;
     line-height: 62px;
-    
+    text-transform: uppercase;
 }
 
 .standard-list {
@@ -97,7 +110,55 @@ a:hover {
      transform: rotateY(360deg);
 }
 
+.gender-icons-container,
+.gender-statistics-wrapper {
+    max-width: 400px;
+    display: inline-block;
+    vertical-align: top;
+}
 
+
+.gender-icons-container i {
+    font-size: 50px;
+    width: 40px;
+    text-align: center;
+    margin: 1px;
+}
+
+/*
+.statistics-container i:hover {
+    transform: scale(2, 2);
+}
+    */
+
+.fa-female {
+    color: #269abc;
+}
+
+.fa-male {
+    color:#204d74
+}
+
+#waiting {
+    font-size: 300px;
+    text-align: center;
+    opacity: 0.1;
+    padding-top: 20%;
+}
+.gender-statistics-wrapper .total-female,
+.gender-statistics-wrapper .total-male {
+    font-size: 130px;
+    padding-top: 20%;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.76)
+}
+
+.gender-statistics-wrapper .total-female {
+    color: #269abc;
+}
+
+.gender-statistics-wrapper .total-male {
+   color:#204d74
+}
 
 .box {
     display: inline-block;
