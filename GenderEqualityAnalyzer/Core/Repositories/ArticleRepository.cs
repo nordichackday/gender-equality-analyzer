@@ -68,5 +68,11 @@ namespace Core.Repositories
         {
             _dbContext.Dispose();
         }
+
+        public IEnumerable<Article> Get(Func<Article, bool> filter)
+        {
+            return _dbContext.Articles.Where(filter).ToList();
+            
+        }
     }
 }

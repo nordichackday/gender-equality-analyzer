@@ -10,7 +10,7 @@ namespace Core.DataContext
     public class GenderEqualityAnalyzerContext : DbContext
     {
         private static readonly string connStr =
-            "Server=tcp:genderequalityanalyzer.database.windows.net,1433;Database=GenderEqualityAnalyzerDb;User ID = sebbe@genderequalityanalyzer;Password=NordicHackday123;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+            "Server=tcp:genderequalityanalyzer.database.windows.net,1433;Database=GenderEqualityAnalyzerDb;User ID = sebbe@genderequalityanalyzer;Password=NordicHackday123;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;MultipleActiveResultSets=true;";
 
         public GenderEqualityAnalyzerContext() : base(connStr)
         {
