@@ -84,7 +84,7 @@ a:hover {
 
 
 .site-logo {
-	font-size:28px;
+	font-size:20px;
 }
 
 .site-logo a {
@@ -337,7 +337,7 @@ input, select, textarea {
 
 @media (min-width: 480px) {
     .site-logo {
-	    font-size:48px;
+	    font-size:34px;
     }
 
     .topmenu .menu-button {

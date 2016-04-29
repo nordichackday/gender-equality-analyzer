@@ -30,5 +30,11 @@ namespace Presentation.Controllers
             return View(content);
         }
 
+
+        public ActionResult Charts(string broadcaster)
+        {
+            
+        }
+
     }
 }
