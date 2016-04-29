@@ -83,6 +83,7 @@
     <Compile Include="Repositories\ArticleRepository.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
     <Compile Include="Repositories\FaceRepository.cs" />
+    <Compile Include="Results\DetailsPageResult.cs" />
     <Compile Include="Results\FaceStartPageResult.cs" />
   </ItemGroup>
   <ItemGroup>

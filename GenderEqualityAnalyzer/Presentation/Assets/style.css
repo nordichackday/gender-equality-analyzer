@@ -117,19 +117,15 @@ a:hover {
     vertical-align: top;
 }
 
-
+.gender-icons-container {
+    margin-right: 8%;
+}
 .gender-icons-container i {
     font-size: 50px;
-    width: 40px;
+    width: 34px;
     text-align: center;
-    margin: 1px;
+    margin:5px 1px;
 }
-
-/*
-.statistics-container i:hover {
-    transform: scale(2, 2);
-}
-    */
 
 .fa-female {
     color: #269abc;
@@ -160,12 +156,21 @@ a:hover {
    color:#204d74
 }
 
+.detailed-statistics-container {
+    font-size: 24px;
+    line-height: 42px;
+}
+
+.detailed-statistics-container i {
+    font-size: 300px;
+}
+
 .box {
     display: inline-block;
     vertical-align: top;
 }
 
-.box .x2 {
+.box.x2 {
     width: 48%;
 }
 

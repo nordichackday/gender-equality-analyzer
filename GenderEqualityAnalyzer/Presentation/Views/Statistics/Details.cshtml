@@ -1,0 +1,29 @@
+﻿@model Core.Results.DetailsPageResult
+<h1 class="large thin-font">@Model.Broadcaster</h1>
+<div class="detailed-statistics-container" onclick="gender.actions.AjaxWorker('/Statistics/GetGenderRepresentation?broadcaster=@Model.Broadcaster', gender.listners.StatisticsAnimation);">
+    <div class="stats">
+        <div class="total-female box x2">
+            <i class="fa fa-female" aria-hidden="true"></i>
+            <ul class="standard-list">
+                <li>Average age: <span class="number-presentation">@Model.AverageAgeWoman</span></li>
+                <li>Happy: <span class="number-presentation">@(Model.HappyFactorWoman)%</span></li>
+                <li>Sad: <span class="number-presentation">@(Model.SadFactorWoman)%</span></li>
+                <li>Average mustache factor: <span class="number-presentation">@(Model.MustachFactorWoman) %</span></li>
+                <li>Average beard factor: <span class="number-presentation">@(Model.BeardFactorWoman)%</span></li>
+                <li>Average sideburns factor: <span class="number-presentation">@(Model.SideburnFactorWoman)%</span></li>
+            </ul>
+        </div>
+
+        <div class="total-male box x2">
+            <i class="fa fa-male" aria-hidden="true"></i>
+            <ul class="standard-list">
+                <li>Average age: <span class="number-presentation">@(Model.AverageAgeMen)</span></li>
+                <li>Happy: <span class="number-presentation">@(Model.HappyFactorMen)%</span></li>
+                <li>Sad: <span class="number-presentation">@(Model.SadFactorMen)%</span></li>
+                <li>Average mustache factor: <span class="number-presentation">@(Model.MustachFactorMen)%</span></li>
+                <li>Average beard factor: <span class="number-presentation">@(Model.BeardFactorMen)%</span></li>
+                <li>Average sideburns factor: <span class="number-presentation">@(Model.SideburnFactorMen)%</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
