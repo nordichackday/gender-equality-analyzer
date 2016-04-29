@@ -138,7 +138,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\_Master.cshtml" />
     <Content Include="Views\Shared\_top.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Statistics\GetGenderRepresentation.cshtml" />
     <Content Include="Views\Statistics\Details.cshtml" />
