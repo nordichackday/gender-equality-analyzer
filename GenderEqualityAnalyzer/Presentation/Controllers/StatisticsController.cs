@@ -29,6 +29,10 @@ namespace Presentation.Controllers
             var content = repo.GetForDetailsPage(broadcaster);
             return View(content);
         }
-        
+
+        public ActionResult Charts(string broadcaster)
+        {
+            
+        }
     }
 }
