@@ -60,7 +60,6 @@ header {
 .thin-font {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-
 }
 
 .large {
@@ -69,6 +68,13 @@ header {
     text-transform: uppercase;
 }
 
+.details-box {
+    text-align: right;
+    margin: 20px 10px;
+    cursor: pointer;
+    color: grey;
+    font-size: 20px;
+}
 .standard-list {
     list-style: none;
     padding: 0;
