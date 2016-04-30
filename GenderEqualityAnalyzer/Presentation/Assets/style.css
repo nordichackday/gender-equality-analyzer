@@ -30,6 +30,10 @@ header {
     margin-right: 40px;
 }
 
+.active {
+    color: #269abc;
+}
+
 .fat {
     font-weight: bold;
 }
