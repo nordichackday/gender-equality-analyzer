@@ -60,8 +60,8 @@ header {
 }
 
 .large {
-    font-size: 58px;
-    line-height: 62px;
+    font-size: 32px;
+    line-height: 32px;
     text-transform: uppercase;
 }
 
@@ -84,11 +84,12 @@ a:hover {
 
 
 .site-logo {
-	font-size:20px;
+	font-size:17px;
 }
 
 .site-logo a {
     text-decoration: none;
+    font-weight: 400;
 }
 
 .site-logo i {
@@ -120,11 +121,12 @@ a:hover {
 .gender-icons-container {
     margin-right: 8%;
 }
+
 .gender-icons-container i {
-    font-size: 50px;
-    width: 34px;
+    font-size: 24px;
+    width: 20px;
     text-align: center;
-    margin:5px 1px;
+    margin: 1px;
 }
 
 .fa-female {
@@ -141,10 +143,11 @@ a:hover {
     opacity: 0.1;
     padding-top: 20%;
 }
+
 .gender-statistics-wrapper .total-female,
 .gender-statistics-wrapper .total-male {
-    font-size: 130px;
-    padding-top: 20%;
+    font-size: 60px;
+    padding-top: 10%;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.76)
 }
 
@@ -157,12 +160,12 @@ a:hover {
 }
 
 .detailed-statistics-container {
-    font-size: 24px;
-    line-height: 42px;
+    font-size: 16px;
+    line-height: 26px;
 }
 
 .detailed-statistics-container i {
-    font-size: 300px;
+    font-size: 180px;
 }
 
 .box {
@@ -340,9 +343,41 @@ input, select, textarea {
 	    font-size:34px;
     }
 
+     .site-logo a {
+	    font-size:34px;
+    }
+
+    .large {
+        font-size: 58px;
+        line-height: 62px;
+    }
+
     .topmenu .menu-button {
         padding: 10px;
         font-size: 35px;
         margin-top: -13px;
     }
+
+    .gender-icons-container i {
+        font-size: 50px;
+        width: 34px;
+        text-align: center;
+        margin:5px 1px;
+    }
+
+    .gender-statistics-wrapper .total-female,
+    .gender-statistics-wrapper .total-male {
+        font-size: 130px;
+        padding-top: 20%;
+    }
+
+    .detailed-statistics-container i {
+       font-size: 300px;
+    }
+
+    .detailed-statistics-container {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
 }
