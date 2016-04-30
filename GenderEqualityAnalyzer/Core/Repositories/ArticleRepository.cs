@@ -36,6 +36,10 @@ namespace Core.Repositories
             _dbContext.Articles.Add(article);
         }
 
+        public bool ContainsUrl(string url)
+        {
+            return _dbContext.Articles.Any(x => x.Url == url);
+        }
         public void Update(Article article)
         {
             _dbContext.Entry(article).State = EntityState.Modified;

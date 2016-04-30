@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext\Article.cs" />
+    <Compile Include="DataContext\BlacklistedImageUrl.cs" />
     <Compile Include="DataContext\Face.cs" />
     <Compile Include="DataContext\Gender.cs" />
     <Compile Include="DataContext\GenderEqualityAnalyzerContext.cs" />
@@ -77,6 +78,10 @@
     <Compile Include="Migrations\201604281556279_index på url.cs" />
     <Compile Include="Migrations\201604281556279_index på url.Designer.cs">
       <DependentUpon>201604281556279_index på url.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604301447449_blacklist.cs" />
+    <Compile Include="Migrations\201604301447449_blacklist.Designer.cs">
+      <DependentUpon>201604301447449_blacklist.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604281556279_index på url.resx">
       <DependentUpon>201604281556279_index på url.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604301447449_blacklist.resx">
+      <DependentUpon>201604301447449_blacklist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
