@@ -81,6 +81,10 @@ header {
     margin: 0;
 }
 
+.visibility-hidden {
+    visibility: hidden;
+}
+
 a {
     text-decoration: none;
     color: #312c32;
@@ -158,7 +162,8 @@ a:hover {
 .gender-statistics-wrapper .total-male {
     font-size: 60px;
     padding-top: 10%;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.76)
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.76);
+    white-space: nowrap;
 }
 
 .gender-statistics-wrapper .total-female {
