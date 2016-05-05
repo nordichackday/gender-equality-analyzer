@@ -71,7 +71,15 @@ gender.listners = {
                 gender.actions.Counter($me);
             });
         }, 500);
+    },
 
+    StatisticsGenderIconAnimation: function() {
+        $($(".gender-icons-container i").get().reverse()).each(function (index) {
+            var $me = $(this);
+            setTimeout(function() {
+                $me.removeClass("visibility-hidden");
+            }, index * 10);
+        });
     }
 }
 
