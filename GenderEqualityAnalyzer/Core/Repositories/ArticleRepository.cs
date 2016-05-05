@@ -34,24 +34,25 @@ namespace Core.Repositories
             return _dbContext.Articles.Find(id);
         }
 
-        public void Add(Article article)
+        public void Add(Article article, int siteId)
         {
+            var site = _dbContext.Sites.Find(siteId);
+            article.Site = site;
             _dbContext.Articles.Add(article);
         }
 
+        public bool ContainsUrl(string url)
+        {
+            return _dbContext.Articles.Any(x => x.Url == url);
+        }
         public void Update(Article article)
         {
             _dbContext.Entry(article).State = EntityState.Modified;
         }
 
-        public void Save()
+        public IEnumerable<Article> FilterParsedArticles(IEnumerable<Article> articles, Site site)
         {
-            _dbContext.SaveChanges();
-        }
-
-        public IEnumerable<Article> FilterParsedArticles(IEnumerable<Article> articles)
-        {
-            var allArticles = _dbContext.Articles.ToList();
+            var allArticles = _dbContext.Articles.Where(x => x.Site.Id == site.Id).ToList();
 
             return
                 articles.Where(x => allArticles.All(a => a.Url != x.Url));
@@ -62,6 +63,11 @@ namespace Core.Repositories
             _dbContext.Articles.AddOrUpdate(x => x.Url, articles.ToArray());
 
             _dbContext.SaveChanges();
+        }
+
+        public async Task Save()
+        {
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Dispose()

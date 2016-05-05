@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\gri.png" />
     <Content Include="Assets\Script.js" />
     <Content Include="Assets\style.css" />
     <Content Include="Global.asax" />
@@ -127,7 +128,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,8 +139,11 @@
     <Content Include="packages.config" />
     <Content Include="Views\_Master.cshtml" />
     <Content Include="Views\Shared\_top.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Statistics\GetGenderRepresentation.cshtml" />
+    <Content Include="Views\Statistics\Details.cshtml" />
+    <None Include="Properties\PublishProfiles\GenderRepresentationIndex - Web Deploy.pubxml" />
+    <Content Include="Views\Statistics\Charts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

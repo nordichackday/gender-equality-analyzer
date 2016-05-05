@@ -1,9 +1,5 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using Core.DataContext;
+﻿using System.Web.Mvc;
 using Core.Repositories;
-using Newtonsoft.Json;
 
 namespace Presentation.Controllers
 {

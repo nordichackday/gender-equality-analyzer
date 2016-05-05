@@ -2,16 +2,20 @@
 
 
 gender.actions = {
-    ToggleMainMenu: function ($me) {
+    ToggleMainMenu: function () {
+        var $button = $(".menu-button");
+        $button.toggleClass("active");
+
+        var $menu = $button.next();
         var animationSpeed = 500;
-        var sliderWidth = $me.width();
+        var sliderWidth = $menu.width();
 
         //check if slider is collapsed
-        var isCollapsed = $me.prev().hasClass("active");
+        var isCollapsed = $button.hasClass("active");
 
         //minus margin or positive margin
         var sign = (isCollapsed) ? "+" : "-";
-        $me.animate({ "margin-right": sign + "=" + sliderWidth }, animationSpeed);
+        $menu.animate({ "margin-right": sign + "=" + sliderWidth }, animationSpeed);
     },
 
     RemoveAnimation: function() {
@@ -33,54 +37,48 @@ gender.actions = {
 
     AddSpinner: function () {
         var $content = $(".page-wrapper");
-        if ($content.hasClass("fade-in")) {
-            $content.removeClass("fade-in").addClass("fade-out");
-            return;
-        } else {
-            $content.addClass("fade-out");
-            
-        }
-
-        setTimeout(function() {
-            $content.html("<div id=\"waiting\"><i class=\"fa fa-venus-mars fa-spin\"></i></div>");
-            $content.removeClass("fade-out").addClass("fade-in");
-        }, 1000);
+        $content.html("<div id=\"waiting\"><i class=\"fa fa-venus-mars fa-spin\"></i></div>");
+        $content.removeClass("fade-out").addClass("fade-in");
 
     },
 
-    GetAnalysedByBroadcaster: function(broadcaster) {
+    AjaxWorker: function(url, callback) {
+
+        gender.actions.AddSpinner();
         $.ajax({
-            dataType: "json",
-            url: "/ajax/GetAnalysedByBroadcaster?name=" + broadcaster,
-            data: data,
-            success: success
-        });
+                url: url
+            })
+            .done(function(data) {
+                gender.actions.AddSpinner();
+                var $content = $(".page-wrapper");
+                $content.html(data);
+                callback();
+            });
     }
 }
 
 gender.listners = {
     MenuButton: function () {
         $(".menu-button").on("click", function () {
-            var $me = $(this);
-            $me.toggleClass("active");
-            gender.actions.ToggleMainMenu($me.next());
+            gender.actions.ToggleMainMenu();
         });
     },
 
-    StatisticsAnimation: function() {
-        $("[data-action='counter']").each(function (index) {
-            var $me = $(this);
-            gender.actions.Counter($me);
-        });
+    StatisticsAnimation: function () {
+        setTimeout(function() {
+            $("[data-action='counter']").each(function(index) {
+                var $me = $(this);
+                gender.actions.Counter($me);
+            });
+        }, 500);
+
     }
 }
 
 
 gender.init = function () {
     gender.listners.MenuButton();
-    setTimeout(function() {
-        gender.listners.StatisticsAnimation();
-    }, 1500);
+    gender.listners.StatisticsAnimation();
 }
 
 

@@ -1,0 +1,58 @@
+﻿@model Core.Repositories.ChartsPageResult
+@{
+    ViewBag.Title = "Charts";
+    Layout = "~/Views/_Master.cshtml";
+}
+<h2>Charts</h2>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+@section extra {
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+    $(function() {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+
+            title: {
+                text: 'Overview, averages'
+            },
+
+            xAxis: {
+                categories: ['Age', 'Beard', 'Moustache', 'Sideburns', 'Happiness', 'Sadness']
+            },
+
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: 'Total'
+                }
+            },
+
+            tooltip: {
+                formatter: function() {
+                    return '<b>' + this.x + '</b><br />' +
+                        this.series.name + ': ' + this.y + '<br />' +
+                        'Total: ' + this.point.stackTotal;
+                }
+            },
+
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+
+            series: [
+                @for (int i = 0; i < Model.Broadcasters.Count; i++)
+                {
+                    var result = Model.Broadcasters[i];
+                    @Html.Raw("{ name: '" + result.Broadcaster + "', data: [" + result.AverageAge + ", " + result.AverageBeard + ", " + result.AverageMustasch + ", " + result.AverageSideburn + ", " + result.AverageHappiness + ", " + result.AverageSadness + "], stack: '" + result.Broadcaster + "'},")
+                }
+            ]
+        });
+    });
+</script>
+ }

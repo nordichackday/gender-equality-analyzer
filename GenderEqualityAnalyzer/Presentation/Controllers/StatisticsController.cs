@@ -7,14 +7,33 @@ namespace Presentation.Controllers
     public class StatisticsController : Controller
     {
         // GET: Statistics
-        public ActionResult Index(string name)
+        public ActionResult Index()
         {
-            if(string.IsNullOrEmpty(name))
+            return View();
+        }
+
+        public ActionResult GetGenderRepresentation(string broadcaster)
+        {
+            if (string.IsNullOrEmpty(broadcaster))
             {
-                name = "SverigesRadio";
+                broadcaster = "SverigesRadio";
             }
             var repo = new FaceRepository();
-            var content = repo.GetForStartPage(name);
+            var content = repo.GetForStartPage(broadcaster);
+            return View(content);
+        }
+
+        public ActionResult Details(string broadcaster)
+        {
+            var repo = new FaceRepository();
+            var content = repo.GetForDetailsPage(broadcaster);
+            return View(content);
+        }
+
+        public ActionResult Charts()
+        {
+            var repo = new FaceRepository();
+            var content = repo.GetForChartsPage();
             return View(content);
         }
     }
